@@ -1,0 +1,14 @@
+sunny,hot,high,f,no
+sunny,hot,high,t,no
+cloudy,hot,high,f,yes
+rainy,mild,high,f,yes
+rainy,cool,normal,f,yes
+rainy,cool,normal,t,yes
+cloudy,cool,normal,t,yes
+sunny,mild,high,f,no
+sunny,cool,normal,f,yes
+rainy,mild,normal,f,yes
+sunny,mild,normal,t,yes
+cloudy,mild,high,t,yes
+cloudy,hot,normal,f,yes
+rainy,mild,high,t,no
