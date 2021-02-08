@@ -50,16 +50,68 @@ class C45:
         
         return entr
 
+    def hitung_entropy(self, dataset, kelas, kolom):
+        jml_kasus_atribut = dict()
+        unique_list = list()
+        last_item = list()
+        occur_dict = dict()
+        occur_kls = list()
+
+        # mencari atribut unik
+        for data in dataset:
+            if data[kolom] not in unique_list:
+                unique_list.append(data[kolom])
+                last_item.append(data[-1])
+
+        # mencari jml kasus atribut
+        for u in unique_list:
+            u_counter = 0
+            for data in dataset:
+                if data[kolom] == u:
+                    u_counter+=1
+            jml_kasus_atribut[u] = u_counter
+        print('Jml kasus atribut ', jml_kasus_atribut)
+
+        
+        # mencari kemunculan atribut dalam kolom
+        for unik in unique_list:
+            occur_kls = list()
+            for kls in kelas:
+                kls_counter = 0
+                for data in dataset:
+                    if data[kolom] == unik:
+                        if data[-1] == kls:
+                            kls_counter+=1
+                
+                occur_kls.append(kls_counter)
+            # print(unik, occur_kls)
+            occur_dict[unik] = occur_kls
+        print('Kemunculan sub atribut dalam kolom : ')
+        print(occur_dict)
+
+
+
+        
+            
+
+        
+
 
 
 
     
     def cari_akar(self, dataset, kelas, jml_kasus):
+        jml_kolom = len(dataset[0])
         entropi_total = self.cari_entropi_root(dataset, kelas, jml_kasus)
 
         # cari entropi per kolom
         entropi_kolom = list()
+        
+        for i in range(0, jml_kolom-1):
+            _col = i
+            entr_atr = self.hitung_entropy(dataset, kelas, _col)
 
-        for item in dataset:
-            pass # bisa dioper per kolom
+
+
+        
 
