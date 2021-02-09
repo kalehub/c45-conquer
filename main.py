@@ -2,7 +2,7 @@
 
 from c45Class import *
 
-DATASET_DIR = '/home/kale/Dev/c45-forsure/c45-Dataset.csv'
+DATASET_DIR = '/Users/teguhsatya/Dev/c45Go/c45-Dataset.csv'
 def main():
     c45 = C45(DATASET_DIR)
 
