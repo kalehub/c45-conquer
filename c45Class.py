@@ -101,12 +101,26 @@ class C45:
             entro_res[key] = key_entro
 
         return entro_res, jml_kasus_atribut
-    
-    def find_gain(self,ent, kas):
-        print('--')
-        print(kas)
-        print(ent)
-        print('--')
+
+    def find_gain(self, entro_kol, kasus, total):
+        gain_dict = dict()
+        for i in range(0, len(kasus)):
+            active_key = None
+            final_gain = 0
+            for key in kasus[i]:
+                active_key = key
+                # print('key : {} : {} : {}'.format(
+                #     key, kasus[i][active_key], entro_kol[i][active_key]))
+                k_ = kasus[i][active_key]
+                e_ = entro_kol[i][active_key]
+                t_gain = (k_/self.jml_kasus_total)*e_
+                # print(t_gain)
+                final_gain += t_gain
+            # print(total-final_gain)
+            gain_dict[i] = total-final_gain
+            # final_gain = total-temp_gain
+            # print(final_gain)
+        return gain_dict
 
     def cari_akar(self, dataset, kelas, jml_kasus):
         jml_kolom = len(dataset[0])
@@ -114,14 +128,19 @@ class C45:
 
         # cari entropi per kolom
         entropi_kolom = list()
-        _kasus = list()
+        occ_ = list()
 
         for i in range(0, jml_kolom-1):
             _col = i
             # entr_atr = self.hitung_entropy(dataset, kelas, _col)
-            entro, cases = self.hitung_entropy(dataset, kelas, _col)
+            entro, occ = self.hitung_entropy(dataset, kelas, _col)
             entropi_kolom.append(entro)
-            _kasus.append(cases)
+            occ_.append(occ)
 
-        # hitung gain tiap-tiap kolom
-        gain = self.find_gain(entropi_kolom, _kasus)
+        # print(entropi_kolom)
+        # print(occ_)
+
+        # hitung gain
+        atr_gain = self.find_gain(entropi_kolom, occ_, entropi_total)
+
+        print(atr_gain)
