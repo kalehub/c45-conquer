@@ -1,6 +1,7 @@
 # contekan pemabahasan https://www.ilmuskripsi.com/2016/07/algoritma-c45.html
 import csv
 import math
+import operator
 
 
 class C45:
@@ -144,3 +145,6 @@ class C45:
         atr_gain = self.find_gain(entropi_kolom, occ_, entropi_total)
 
         print(atr_gain)
+        # mengambil key dari nilai terbesar
+        root = max(atr_gain.items(), key=operator.itemgetter(1))[0]
+        return root
