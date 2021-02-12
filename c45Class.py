@@ -6,6 +6,7 @@ import operator
 
 class C45:
     def __init__(self, csv_file):
+        self.tree = dict()
         self.dataset = self.read_dataset(csv_file)
         self.cls = self.find_classes(self.dataset)
         self.jml_kasus_total = len(self.dataset)
@@ -13,6 +14,22 @@ class C45:
         # langkah 1 : cari akar
         self.akar = self.cari_akar(
             self.dataset, self.cls, self.jml_kasus_total)
+        self.atr_akar = list()
+
+        # cari atribut yang tersedia
+        for data in self.dataset:
+            if data[self.akar] not in self.atr_akar:
+                self.atr_akar.append(data[self.akar])
+
+        # cek nilai atribut jika perlu bentuk cabang (cek dari jumlah)
+        for atr in self.atr_akar:
+            y_counter = 0
+            for data in self.dataset:
+                if data[self.akar] == atr:
+                    # cek kalo ada atribut yang nilai yes dan nonya tidak stabil
+                    if data[-1] == self.cls[1]:
+                        y_counter += 1
+            print(atr, y_counter)
 
     def read_dataset(self, csv_file):
         _list = list()
