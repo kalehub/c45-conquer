@@ -31,6 +31,9 @@ class C45:
                         y_counter += 1
             print(atr, y_counter)
 
+    def get_root(self):
+        return self.akar
+
     def read_dataset(self, csv_file):
         _list = list()
         with open(csv_file, 'r') as _file:
