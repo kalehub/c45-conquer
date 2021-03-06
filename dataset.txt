@@ -1,0 +1,15 @@
+NO,OUTLOOK,TEMPERATURE,HUMIDITY,WINDY,PLAY
+1,sunny,hot,high,f,no
+2,sunny,hot,high,t,no
+3,cloudy,hot,high,f,yes
+rainy,mild,high,f,yes
+rainy,cool,normal,f,yes
+rainy,cool,normal,t,yes
+cloudy,cool,normal,t,yes
+sunny,mild,high,f,no
+sunny,cool,normal,f,yes
+sunny,mild,normal,f,yes
+sunny,mild,normal,t,yes
+cloudy,mild,high,true,yes
+cloudy,hot,normal,f,yes
+rainy,mild,high,t,no
